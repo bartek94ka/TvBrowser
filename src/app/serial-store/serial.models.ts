@@ -14,9 +14,9 @@ export interface ISerial {
   name?: string;
   season?: number;
   type?: string;
-  airDate?: string;
-  airTime?: string;
-  airStamp?: string;
+  airdate?: string;
+  airtime?: string;
+  airstamp?: Date;
   runtime?: number;
   image?: IImage;
   summary?: string;

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <span>{{ serial.name }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div [innerHTML]="serial.summary"></div>
+    </div>
+  </div>
+  <div *ngIf="serial.image?.medium" class="row">
+    <div class="col">
+        <img [src]="serial.image?.medium">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <span>Sezon: {{ serial.season }}</span>
+    </div>
+  </div>
+  <span *ngIf="serial.airstamp">Godzina emisji: {{ serial.airstamp | date: 'H:mm' }}</span>
+</div>

@@ -1,3 +1,5 @@
-<div *ngFor="let serial of serials">
-    <span>{{serial.name}}</span>
+<div class="container">
+    <ng-container *ngFor="let serial of serials">
+        <app-serial-card class="serial-card" [serial]="serial"></app-serial-card>
+    </ng-container>
 </div>

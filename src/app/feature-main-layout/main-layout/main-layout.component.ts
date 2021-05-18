@@ -15,7 +15,7 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit(): void  {
     const filter: IFilter = {
-      date: '2021-05-16'
+      date: '2021-05-01'
     }
     this.serialFacade.getFilteredSerials(filter);
     this.serialFacade.serials$.subscribe((data) => {
