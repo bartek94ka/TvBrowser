@@ -5,7 +5,9 @@ import * as serialActions from '../serial-store/serial.actions';
 import * as selectors from './serial.selectors';
 import { IFilter } from './serial.models';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class SerialFacade {
     serials$ = this.store.select(selectors.getFilteredSerials);
 
