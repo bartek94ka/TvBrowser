@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ISerial } from 'src/app/serial-store/serial.models';
 // import { ISerial } from 'src/app/serial-store/serial.models';
 
@@ -6,15 +6,8 @@ import { ISerial } from 'src/app/serial-store/serial.models';
   selector: 'app-serial-list',
   templateUrl: './serial-list.component.html',
   styleUrls: ['./serial-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SerialListComponent implements OnInit {
-
+export class SerialListComponent {
   @Input() serials: ISerial[] = [];
-  
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log('init');
-  }
-
 }

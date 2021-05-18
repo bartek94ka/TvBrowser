@@ -1,11 +1,23 @@
 export interface IFilter {
-  date?: string;
-  genres?: GenresType[];
+  date: Date;
+  genres?: string[];
 }
 
 export enum GenresType {
   CHILDREN = 'Children',
   SPORTS = 'Sports',
+  SUPERNATURAL = 'Supernatural',
+  COMEDY = 'Comedy',
+  ADVENTURE = 'Adventure',
+  SCIENCEFICTION = 'Science-Fiction',
+  DRAMA = 'Drama',
+  HORROR = 'Horror',
+  THRILLER = 'Thriller',
+  FAMILY = 'Family',
+  MUSIC = 'Music',
+  MEDICAL = 'Medical',
+  ACTION = 'Action',
+  ANIME = 'Anime',
 }
 
 export interface ISerial {
@@ -20,9 +32,19 @@ export interface ISerial {
   runtime?: number;
   image?: IImage;
   summary?: string;
+  _embedded?: IEmbeddedSerial;
 }
 
 export interface IImage {
   medium?: string;
   original?: string;
+}
+
+export interface IEmbeddedSerial {
+  show?: IShow;
+}
+
+export interface IShow {
+  genres?: GenresType[];
+  summary?: string;
 }

@@ -1,1 +1,29 @@
-<p>filter works!</p>
+<div class="container">
+  <div>
+    <form [formGroup]="form">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Select date</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="date" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Categories</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option
+              *ngFor="let topping of genresOptions"
+              [value]="topping"
+              >{{ topping }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>

@@ -4,8 +4,9 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { SerialStoreModule } from '../serial-store/serial-store.module';
 import { FeatureFiltersModule } from '../feature-filters/feature-filters.module';
 import { FeatureSerialsModule } from '../feature-serials/feature-serials.module';
-import { HttpClient } from '@angular/common/http';
-import { StoreModule, StateObservable } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StoreModule, StateObservable } from '@ngrx/store';
     FeatureSerialsModule,
     SerialStoreModule,
     StoreModule,
+    ReactiveFormsModule,
   ],
   exports: [MainLayoutComponent],
   providers: [],

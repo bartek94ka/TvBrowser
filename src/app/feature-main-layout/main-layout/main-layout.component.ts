@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { SerialFacade } from '../../serial-store/serial.facade';
-import { ISerial, IFilter } from '../../serial-store/serial.models';
+import { ISerial, IFilter, GenresType } from '../../serial-store/serial.models';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
+@UntilDestroy()
 export class MainLayoutComponent implements OnInit {
-  title = 'TvBrowser';
-  constructor(public serialFacade: SerialFacade) { }
-  
   serials: ISerial[] = [];
+  //TODO: get genres from retrived serials
+  genresOptions: string[] = [GenresType.ACTION, GenresType.ADVENTURE];
+  constructor(public serialFacade: SerialFacade) { }
 
-  ngOnInit(): void  {
+  ngOnInit(): void {
     const filter: IFilter = {
-      date: '2021-05-01'
+      date: new Date(),
     }
     this.serialFacade.getFilteredSerials(filter);
-    this.serialFacade.serials$.subscribe((data) => {
-      this.serials = data;
-      console.log(data);
-    });
- }
+    this.serialFacade.serials$
+      .pipe(untilDestroyed(this))
+      .subscribe((data) => {
+        this.serials = data;
+      });
+  }
 
+  onFilterChange(filter: IFilter): void {
+    this.serialFacade.getFilteredSerials(filter);
+  }
 }
