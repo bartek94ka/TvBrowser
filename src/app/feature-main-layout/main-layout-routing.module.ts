@@ -9,7 +9,7 @@ const routes: Routes = [
         component: MainLayoutContentComponent,
     },
     {
-        path: 'details/:username',
+        path: 'details/:id',
         component: SerialDetailsComponent,
     }
 ];

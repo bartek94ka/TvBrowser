@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-serial-details',
   templateUrl: './serial-details.component.html',
@@ -14,9 +16,11 @@ export class SerialDetailsComponent implements OnInit {
   //load details from store
   //export card to common feature module
   ngOnInit(): void {
-    this.route.url.subscribe(url => {
-      console.log(url[1]);
+    this.route.params
+    .pipe(untilDestroyed(this))
+    .subscribe(params => {
+      //use id to retrive details 
+      //params.id;
     });
   }
-
 }
