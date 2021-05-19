@@ -1,1 +1,32 @@
-<p>serial-details works!</p>
+<app-card>
+  <ng-template cardContent>
+    <ng-container
+      *ngTemplateOutlet="serialDetails; context: { $implicit: serial }"
+    ></ng-container>
+  </ng-template>
+</app-card>
+
+<ng-template #serialDetails let-serial>
+    <div class="header">
+      <span>{{ serial.name }}</span>
+      <span>Type: {{ serial.type }}</span>
+      <span
+        >Genres:
+        <span *ngFor="let genre of serial.genres">{{ genre }} </span>
+        <span *ngIf="serial.genres?.length === 0">Not specified</span>
+      </span>
+      <span *ngIf="serial.rating?.average"
+        >Rating: {{ serial.rating?.average }}</span
+      >
+    </div>
+    <div class="content">
+      <div *ngIf="serial.image?.original">
+        <img [src]="serial.image?.medium" />
+      </div>
+      <span *ngIf="serial.premiered"
+        >Premier date: {{ serial.premiered }}</span
+      >
+      <a *ngIf="serial.officialSite" [href]="serial.officialSite">Official website</a>
+      <div [innerHTML]="serial.summary"></div>
+    </div>
+</ng-template>

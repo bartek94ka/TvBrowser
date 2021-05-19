@@ -62,6 +62,7 @@ export interface ISerialDetails {
   rating?: IRating;
   image?: IImage;
   summary?: string;
+  type?: string;
 }
 
 export interface IRating {

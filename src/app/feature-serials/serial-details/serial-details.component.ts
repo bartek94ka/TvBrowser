@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SerialFacade } from 'src/app/serial-store/serial.facade';
-import { ISerialDetails } from 'src/app/serial-store/serial.models';
+import { GenresType, ISerialDetails } from 'src/app/serial-store/serial.models';
 
 @UntilDestroy()
 @Component({
@@ -12,11 +12,13 @@ import { ISerialDetails } from 'src/app/serial-store/serial.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SerialDetailsComponent implements OnInit {
-  serialDetails: ISerialDetails;
-  constructor(private route: ActivatedRoute, private serialFacade: SerialFacade) { }
+  serial: ISerialDetails;
 
-  //load details from store
-  //export card to common feature module
+  constructor(
+    private route: ActivatedRoute, 
+    private serialFacade: SerialFacade,
+    private cdr: ChangeDetectorRef) { }
+
   ngOnInit(): void {
     this.route.params
       .pipe(untilDestroyed(this))
@@ -26,8 +28,8 @@ export class SerialDetailsComponent implements OnInit {
     this.serialFacade.serialDetails$
       .pipe(untilDestroyed(this))
       .subscribe((serialDetails) => {
-        this.serialDetails = serialDetails;
-        console.log(this.serialDetails);
+        this.serial = serialDetails;
+        this.cdr.markForCheck();
       });
   }
 }

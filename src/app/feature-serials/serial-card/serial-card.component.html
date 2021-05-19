@@ -1,34 +1,42 @@
-<div class="container" (click)="navigateToDetails()">
-  <div class="row">
-    <div class="col">
-      <span class="serial-name">{{ serial._embedded?.show?.name }}</span>
+<app-card (click)="navigateToDetails()">
+  <ng-template cardContent>
+    <ng-container *ngTemplateOutlet="serialOverview"></ng-container>
+  </ng-template>
+</app-card>
+
+<ng-template #serialOverview>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="serial-name">{{ serial._embedded?.show?.name }}</span>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <span
-        >Genres:
-        <span *ngFor="let genre of serialGenres">{{ genre }} </span>
-        <span *ngIf="serialGenres.length === 0">Not specified</span>
-      </span>
+    <div class="row">
+      <div class="col">
+        <span
+          >Genres:
+          <span *ngFor="let genre of serialGenres">{{ genre }} </span>
+          <span *ngIf="serialGenres.length === 0">Not specified</span>
+        </span>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <span>Season: {{ serial.season }}</span>
+    <div class="row">
+      <div class="col">
+        <span>Season: {{ serial.season }}</span>
+      </div>
     </div>
-  </div>
-  <span *ngIf="serial.airstamp"
-    >Time of broadcast: {{ serial.airstamp | date: "H:mm" }}</span
-  >
-  <div *ngIf="serial.image?.medium" class="row">
-    <div class="col">
-      <img [src]="serial.image?.medium" />
+    <span *ngIf="serial.airstamp"
+      >Time of broadcast: {{ serial.airstamp | date: "H:mm" }}</span
+    >
+    <div *ngIf="serial.image?.medium" class="row">
+      <div class="col">
+        <img [src]="serial.image?.medium" />
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="line-clamp" [innerHTML]="serial._embedded?.show?.summary"></div>
+    <div class="row">
+      <div class="col">
+        <div class="line-clamp" [innerHTML]="serial._embedded?.show?.summary"></div>
+      </div>
     </div>
-  </div>
-</div>
+  </div>  
+</ng-template>
