@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import * as SerialActions from './serial.actions';
 import { SerialService } from './serial.service';
 import { GenresType, IFilter, ISerial } from './serial.models';
@@ -14,7 +14,7 @@ export class SerialEffects {
   GetFilteredSerials$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(SerialActions.GetFilteredSerials),
-      mergeMap(action =>
+      switchMap(action =>
         this.serialService.getFilteredSerials(action.filter).pipe(
           map((data: ISerial[]) => {
             return SerialActions.GetFilteredSerialsSuccess(

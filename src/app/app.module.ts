@@ -11,10 +11,6 @@ import { SerialReducer } from './serial-store/serial.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SerialEffects } from './serial-store/serial.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [

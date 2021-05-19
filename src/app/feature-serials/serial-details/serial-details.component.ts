@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-serial-details',
@@ -8,9 +9,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class SerialDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
+  //load details from store
+  //export card to common feature module
   ngOnInit(): void {
+    this.route.url.subscribe(url => {
+      console.log(url[1]);
+    });
   }
 
 }

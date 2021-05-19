@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 left-container">
+      <app-filter
+        [genresOptions]="genresOptions"
+        (filterChange)="onFilterChange($event)"
+      ></app-filter>
+    </div>
+    <div class="col-9 content-container">
+      <app-serial-list [serials]="serials"></app-serial-list>
+    </div>
+  </div>
+</div>

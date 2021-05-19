@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (click)="navigateToDetails(serial.id)">
   <div class="row">
     <div class="col">
       <span class="serial-name">{{ serial.name }}</span>
@@ -6,7 +6,8 @@
   </div>
   <div class="row">
     <div class="col">
-      <span>Genres:
+      <span
+        >Genres:
         <span *ngFor="let genre of serialGenres">{{ genre }} </span>
         <span *ngIf="serialGenres.length === 0">Not specified</span>
       </span>
