@@ -11,11 +11,12 @@ import { ISerial, GenresType } from 'src/app/serial-store/serial.models';
 export class SerialCardComponent {
   private _serial: ISerial;
   serialGenres : GenresType[] = [];
+  serialId: string;
 
   @Input() set serial (serial: ISerial) {
     this._serial = serial;
-    this.serialGenres.length
     this.serialGenres = serial._embedded?.show?.genres ? serial._embedded?.show?.genres : [];
+    this.serialId = serial._embedded?.show?.id as string;
   }
   get serial(): ISerial {
     return this._serial;
@@ -23,7 +24,7 @@ export class SerialCardComponent {
 
   constructor(private router: Router) {}
 
-  navigateToDetails(serialId?: number) {
-    this.router.navigate(['/details', serialId]);
+  navigateToDetails() {
+    this.router.navigate(['/details', this.serialId]);
   }
 }

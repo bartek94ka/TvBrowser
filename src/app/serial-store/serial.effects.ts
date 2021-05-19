@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import * as SerialActions from './serial.actions';
 import { SerialService } from './serial.service';
-import { GenresType, IFilter, ISerial } from './serial.models';
+import { GenresType, IFilter, ISerial, ISerialDetails } from './serial.models';
 
 @Injectable()
 export class SerialEffects {
@@ -18,12 +18,14 @@ export class SerialEffects {
         this.serialService.getFilteredSerials(action.filter).pipe(
           map((data: ISerial[]) => {
             return SerialActions.GetFilteredSerialsSuccess(
-              { 
-                payload: this.getFilteredSerialsByCategories(data, action.filter), 
+              {
+                payload: this.getFilteredSerialsByCategories(data, action.filter),
                 serialsGenres: this.getUniqueSerialsGenres(data),
               });
           }),
           catchError((error: Error) => {
+
+            //handle specific error for filtered actions
             return of(SerialActions.ErrorSerialAction(error));
           })
         )
@@ -31,14 +33,31 @@ export class SerialEffects {
     )
   );
 
+  GetSerialById$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(SerialActions.GetSerialById),
+      switchMap(action =>
+        this.serialService.getSerialDetails(action.serialId).pipe(
+          map((data: ISerialDetails) => {
+            return SerialActions.GetSerialByIdSuccess({ serial: data });
+          }),
+          catchError((error: Error) => {
+            //handle specific error for detailed action
+            return of(SerialActions.ErrorSerialAction(error));
+          })
+        )
+      ),
+    )
+  );
+
   private getFilteredSerialsByCategories(serials: ISerial[], filter: IFilter): ISerial[] {
     const filteredSerials: ISerial[] = [];
-    if(filter.genres === undefined || filter.genres?.length === 0){
+    if (filter.genres === undefined || filter.genres?.length === 0) {
       return serials;
     }
     serials.map((serial) => {
       const genres = serial?._embedded?.show?.genres
-      if(genres?.some((genre) => filter.genres?.includes(genre)) === true) {
+      if (genres?.some((genre) => filter.genres?.includes(genre)) === true) {
         filteredSerials.push(serial);
       }
     });

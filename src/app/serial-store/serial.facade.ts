@@ -7,14 +7,19 @@ import { IFilter } from './serial.models';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class SerialFacade {
     serials$ = this.store.select(selectors.getFilteredSerials);
     serialsGenres$ = this.store.select(selectors.getFilteredSerialsGenres);
-    
+    serialDetails$ = this.store.select(selectors.getSerialDetails);
+
     constructor(private store: Store<{ serials: SerialState }>) { }
 
     getFilteredSerials(filter: IFilter): void {
         this.store.dispatch(serialActions.GetFilteredSerials({ filter }));
+    }
+
+    getSerialDetailsById(serialId: string): void {
+        this.store.dispatch(serialActions.GetSerialById({ serialId }));
     }
 }

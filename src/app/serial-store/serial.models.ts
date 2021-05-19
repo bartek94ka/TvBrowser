@@ -45,6 +45,25 @@ export interface IEmbeddedSerial {
 }
 
 export interface IShow {
+  id?: string;
   genres?: GenresType[];
   summary?: string;
+  name?: string;
+}
+
+export interface ISerialDetails {
+  id?: number;
+  url?: string;
+  name?: string;
+  genres?: GenresType[];
+  averageRuntime?: number;
+  premiered?: Date;
+  officialSite?: string;
+  rating?: IRating;
+  image?: IImage;
+  summary?: string;
+}
+
+export interface IRating {
+  average?: number;
 }

@@ -1,7 +1,7 @@
-<div class="container" (click)="navigateToDetails(serial.id)">
+<div class="container" (click)="navigateToDetails()">
   <div class="row">
     <div class="col">
-      <span class="serial-name">{{ serial.name }}</span>
+      <span class="serial-name">{{ serial._embedded?.show?.name }}</span>
     </div>
   </div>
   <div class="row">
@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <div [innerHTML]="serial.summary"></div>
+      <div class="line-clamp" [innerHTML]="serial._embedded?.show?.summary"></div>
     </div>
   </div>
 </div>
