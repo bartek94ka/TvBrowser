@@ -10,7 +10,8 @@ import { IFilter } from './serial.models';
   })
 export class SerialFacade {
     serials$ = this.store.select(selectors.getFilteredSerials);
-
+    serialsGenres$ = this.store.select(selectors.getFilteredSerialsGenres);
+    
     constructor(private store: Store<{ serials: SerialState }>) { }
 
     getFilteredSerials(filter: IFilter): void {

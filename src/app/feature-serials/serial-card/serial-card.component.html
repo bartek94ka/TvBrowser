@@ -6,18 +6,19 @@
   </div>
   <div class="row">
     <div class="col">
-      <span>Gatunek:
-        <span *ngFor="let genre of serialGenres">{{ genre }}</span>
+      <span>Genres:
+        <span *ngFor="let genre of serialGenres">{{ genre }} </span>
+        <span *ngIf="serialGenres.length === 0">Not specified</span>
       </span>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <span>Sezon: {{ serial.season }}</span>
+      <span>Season: {{ serial.season }}</span>
     </div>
   </div>
   <span *ngIf="serial.airstamp"
-    >Godzina emisji: {{ serial.airstamp | date: "H:mm" }}</span
+    >Time of broadcast: {{ serial.airstamp | date: "H:mm" }}</span
   >
   <div *ngIf="serial.image?.medium" class="row">
     <div class="col">

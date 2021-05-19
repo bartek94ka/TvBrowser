@@ -1,10 +1,10 @@
-import { ISerial } from './serial.models';
+import { GenresType, ISerial } from './serial.models';
 
 export default class SerialState {
   serials: ISerial[] = [];
-  // error: any;
+  serialGenres: GenresType[] = [];
 }
 
 export const initializeState = (): SerialState => {
-  return { serials: [] };
+  return { serials: [], serialGenres: [] };
 };
