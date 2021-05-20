@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { CommonComponentsModule } from 'src/app/common-components/common-components.module';
@@ -12,7 +13,8 @@ describe('FilterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ FilterComponent ],
       imports: [CommonComponentsModule],
-      providers: [FormBuilder]
+      providers: [FormBuilder],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });

@@ -8,7 +8,7 @@ import * as serialActions from './serial.actions';
 
 const mockSerialDetails: ISerialDetails = {
     name: 'Narcos', id: 1234523, genres: [GenresType.ACTION],
-}
+};
 
 const mockGenres: GenresType[] = [GenresType.ACTION];
 const mockSerial: ISerial = {
@@ -56,7 +56,6 @@ describe('SerialEffects', () => {
 
         it('should return results on success', () => {
             effects.getSerialById$.subscribe(action => {
-                console.log(action);
                 expect(action).toEqual(serialActions.GetSerialByIdSuccess({ serial: mockSerialDetails }));
             })
         });

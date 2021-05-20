@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SerialFacade } from 'src/app/serial-store/serial.facade';
-import { GenresType, ISerialDetails } from 'src/app/serial-store/serial.models';
+import { ISerialDetails } from 'src/app/serial-store/serial.models';
 
 @UntilDestroy()
 @Component({
@@ -15,7 +15,7 @@ export class SerialDetailsComponent implements OnInit {
   serial: ISerialDetails;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private serialFacade: SerialFacade,
     private cdr: ChangeDetectorRef) { }
 
@@ -30,6 +30,16 @@ export class SerialDetailsComponent implements OnInit {
       .subscribe((serialDetails) => {
         this.serial = serialDetails;
         this.cdr.markForCheck();
+      });
+    this.serialFacade.error$
+      .pipe(untilDestroyed(this))
+      .subscribe((error) => {
+        //TODO: handle error by display some toast or text
+      });
+    this.serialFacade.isLoading$
+      .pipe(untilDestroyed(this))
+      .subscribe((error) => {
+        //TODO: handle isLoading to display some spinner
       });
   }
 }

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { MainLayoutContentComponent } from './main-layout-content.component';
 
@@ -22,7 +23,8 @@ describe('MainLayoutContentComponent', () => {
             select: jasmine.createSpy('select').and.callFake(() => new Observable())
           }
         }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });

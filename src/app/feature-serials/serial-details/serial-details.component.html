@@ -1,4 +1,4 @@
-<app-card>
+<app-card class="detailed-card">
   <ng-template cardContent>
     <ng-container
       *ngTemplateOutlet="serialDetails; context: { $implicit: serial }"
@@ -7,24 +7,29 @@
 </app-card>
 
 <ng-template #serialDetails let-serial>
-    <div class="header">
-      <span>{{ serial.name }}</span>
-      <span>Type: {{ serial.type }}</span>
-      <a *ngIf="serial.officialSite" [href]="serial.officialSite">Official website</a>
-      <span
-        >Genres:
-        <span *ngFor="let genre of serial.genres">{{ genre }} </span>
-        <span *ngIf="serial.genres?.length === 0">Not specified</span>
-      </span>
-      <span *ngIf="serial.premiered">Premier date: {{ serial.premiered }}</span>
-      <span *ngIf="serial.rating?.average"
-        >Rating: {{ serial.rating?.average }}</span
-      >
-    </div>
-    <div class="content">
+  <div class="panel">
+    <div class="left-panel">
       <div *ngIf="serial.image?.original">
         <img [src]="serial.image?.medium" />
       </div>
+    </div>
+    <div class="right-panel">
+      <span class="serial-name">{{ serial.name }}</span>
+      <a *ngIf="serial.officialSite" [href]="serial.officialSite">Official website</a>
+      <span><span class="label">Type: </span>{{ serial.type }}</span>
+      <div>
+        <span class="label">Genres: </span>
+        <span *ngFor="let genre of serial.genres">{{ genre }} </span>
+        <span *ngIf="serial.genres?.length === 0">Not specified</span>
+      </div>
+      <span *ngIf="serial.premiered"
+        ><span class="label">Premier date: </span>{{ serial.premiered }}
+      </span>
+      <span *ngIf="serial.rating?.average">
+        <span class="label">Rating: </span>{{ serial.rating?.average }}
+      </span>
+      <span class="label">Description</span>
       <div [innerHTML]="serial.summary"></div>
     </div>
+  </div>
 </ng-template>

@@ -33,6 +33,16 @@ export class MainLayoutContentComponent implements OnInit {
         this.genresOptions = data;
         this.cdr.markForCheck();
       });
+    this.serialFacade.error$
+      .pipe(untilDestroyed(this))
+      .subscribe((error) => { 
+        //TODO: handle error by display some toast or text
+      });
+    this.serialFacade.isLoading$
+      .pipe(untilDestroyed(this))
+      .subscribe((error) => { 
+        //TODO: handle isLoading to display some spinner
+      });
   }
 
   onFilterChange(filter: IFilter): void {
