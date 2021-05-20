@@ -23,10 +23,8 @@ export class SerialEffects {
                 serialsGenres: this.getUniqueSerialsGenres(data),
               });
           }),
-          catchError((error: Error) => {
-
-            //handle specific error for filtered actions
-            return of(SerialActions.ErrorSerialAction(error));
+          catchError((error: any) => {
+            return of(SerialActions.GetFilteredSerialsFailed(error));
           })
         )
       )
@@ -41,9 +39,8 @@ export class SerialEffects {
           map((data: ISerialDetails) => {
             return SerialActions.GetSerialByIdSuccess({ serial: data });
           }),
-          catchError((error: Error) => {
-            //handle specific error for detailed action
-            return of(SerialActions.ErrorSerialAction(error));
+          catchError((error: any) => {
+            return of(SerialActions.GetSerialByIdFailed(error));
           })
         )
       ),

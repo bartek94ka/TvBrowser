@@ -2,23 +2,27 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as SerialActions from './serial.actions';
 import SerialState, { initializeState } from './serial.state';
 
-export const serialFeatureKey = 'SerialState';
-
 const initialState = initializeState();
 
 const reducer = createReducer(
   initialState,
   on(SerialActions.GetFilteredSerials, (state: SerialState) => {
-    return { ...state, serials: [], }
+    return { ...state, serials: [], error: {}, isLoading: true }
   }),
   on(SerialActions.GetFilteredSerialsSuccess, (state: SerialState, { payload, serialsGenres }) => { 
-    return { ...state, serials: payload, serialGenres: serialsGenres };
+    return { ...state, serials: payload, serialGenres: serialsGenres, error: {}, isLoading: false };
+  }),
+  on(SerialActions.GetFilteredSerialsFailed, (state: SerialState, { error }) => { 
+    return { ...state, serials: [], serialGenres: [], error: error, isLoading: false };
   }),
   on(SerialActions.GetSerialById, (state: SerialState) => {
-    return { ...state, serialDetails: {} };
+    return { ...state, serialDetails: {}, error: {}, isLoading: true };
   }),
   on(SerialActions.GetSerialByIdSuccess, (state: SerialState, { serial }) => {
-    return { ...state, serialDetails: serial };
+    return { ...state, serialDetails: serial, error: {}, isLoading: false };
+  }),
+  on(SerialActions.GetSerialByIdFailed, (state: SerialState, { error }) => {
+    return { ...state, serialDetails: {}, error: error, isLoading: false };
   }),
 );
 

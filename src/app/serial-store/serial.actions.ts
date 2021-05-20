@@ -7,8 +7,13 @@ export const GetFilteredSerials = createAction(
 );
 
 export const GetFilteredSerialsSuccess = createAction(
-  '[Serial] - Success Get Filtered Serials',
+  '[Serial] - Get Filtered Serials Success',
   props<{ payload: ISerial[], serialsGenres: GenresType[] }>()
+);
+
+export const GetFilteredSerialsFailed = createAction(
+  '[Serial] - Get Filtered Serials Failed',
+  props<{ error: any }>()
 );
 
 export const GetSerialById = createAction(
@@ -19,6 +24,11 @@ export const GetSerialById = createAction(
 export const GetSerialByIdSuccess = createAction(
   '[Serial] - Get Serial By Id Success',
   props<{ serial: ISerialDetails }>()
+);
+
+export const GetSerialByIdFailed = createAction(
+  '[Serial] - Get Serial By Id Failed',
+  props<{ error: any }>()
 );
 
 export const ErrorSerialAction = createAction('[Serial] - Error', props<Error>());

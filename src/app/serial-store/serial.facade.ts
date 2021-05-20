@@ -12,6 +12,8 @@ export class SerialFacade {
     serials$ = this.store.select(selectors.getFilteredSerials);
     serialsGenres$ = this.store.select(selectors.getFilteredSerialsGenres);
     serialDetails$ = this.store.select(selectors.getSerialDetails);
+    error$ = this.store.select(selectors.getError);
+    isLoading$ = this.store.select(selectors.getIsLoading);
 
     constructor(private store: Store<{ serials: SerialState }>) { }
 
