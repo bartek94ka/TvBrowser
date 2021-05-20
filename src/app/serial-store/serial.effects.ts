@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import * as SerialActions from './serial.actions';
 import { SerialService } from './serial.service';
 import { GenresType, IFilter, ISerial, ISerialDetails } from './serial.models';
@@ -11,7 +11,7 @@ import { GenresType, IFilter, ISerial, ISerialDetails } from './serial.models';
 export class SerialEffects {
   constructor(private serialService: SerialService, private action$: Actions) { }
 
-  GetFilteredSerials$: Observable<Action> = createEffect(() =>
+  getFilteredSerials$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(SerialActions.GetFilteredSerials),
       switchMap(action =>
@@ -31,7 +31,7 @@ export class SerialEffects {
     )
   );
 
-  GetSerialById$: Observable<Action> = createEffect(() =>
+  getSerialById$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(SerialActions.GetSerialById),
       switchMap(action =>
