@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CardContentDirective } from './card-content.directive';
 
 import { CardComponent } from './card.component';
 
@@ -8,7 +10,11 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
+      declarations: [ 
+        CardComponent,
+        CardContentDirective 
+      ],
+      imports: [CommonModule]
     })
     .compileComponents();
   });
