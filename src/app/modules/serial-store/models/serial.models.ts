@@ -1,6 +1,6 @@
 export interface IFilter {
   date: Date;
-  genres?: string[];
+  genres: GenresType[];
 }
 
 export enum GenresType {

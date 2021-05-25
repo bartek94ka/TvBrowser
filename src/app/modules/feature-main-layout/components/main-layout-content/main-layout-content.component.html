@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 pb-3">
       <app-filter
-        [genresOptions]="genresOptions"
+        [genresOptions]="(genresOptions$ | async)!"
         (filterChange)="onFilterChange($event)"
       ></app-filter>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-6">
-      <app-serial-list [serials]="serials"></app-serial-list>
+      <app-serial-list [serials]="(serials$ | async)!"></app-serial-list>
     </div>
   </div>
 </div>

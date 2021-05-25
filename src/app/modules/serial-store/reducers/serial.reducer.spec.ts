@@ -16,6 +16,7 @@ describe('SerialReducer', () => {
         it('should set isLoading to true', () => {
             const filter: IFilter = {
                 date: new Date(),
+                genres: [],
             }
             const action = GetFilteredSerials({ filter: filter });
 

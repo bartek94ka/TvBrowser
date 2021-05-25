@@ -8,5 +8,5 @@ import { ISerial } from 'src/app/modules/serial-store/models/serial.models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SerialListComponent {
-  @Input() serials: ISerial[] = [];
+  @Input() serials: ISerial[];
 }

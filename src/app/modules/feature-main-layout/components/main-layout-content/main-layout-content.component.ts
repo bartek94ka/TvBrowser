@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SerialFacade } from '../../../serial-store/serial.facade';
-import { ISerial, IFilter } from '../../../serial-store/models/serial.models';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { IFilter } from '../../../serial-store/models/serial.models';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
@@ -11,37 +11,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainLayoutContentComponent implements OnInit {
-  serials: ISerial[] = [];
-  genresOptions: string[] = [];
-  constructor(private serialFacade: SerialFacade, private cdr: ChangeDetectorRef ) { }
+  serials$ = this.serialFacade.serials$;
+  genresOptions$ = this.serialFacade.serialsGenres$
+  error$ = this.serialFacade.error$;
+  isLoading$ = this.serialFacade.isLoading$;
+  constructor(private serialFacade: SerialFacade) { }
 
   ngOnInit(): void {
     const filter: IFilter = {
       date: new Date(),
+      genres: [],
     }
     this.serialFacade.getFilteredSerials(filter);
-    this.serialFacade.serials$
-      .pipe(untilDestroyed(this))
-      .subscribe((data) => {
-        this.serials = data;
-        this.cdr.markForCheck();
-      });
-    this.serialFacade.serialsGenres$
-      .pipe(untilDestroyed(this))
-      .subscribe((data) => {
-        this.genresOptions = data;
-        this.cdr.markForCheck();
-      });
-    this.serialFacade.error$
-      .pipe(untilDestroyed(this))
-      .subscribe((error) => { 
-        //TODO: handle error by display some toast or text
-      });
-    this.serialFacade.isLoading$
-      .pipe(untilDestroyed(this))
-      .subscribe((error) => { 
-        //TODO: handle isLoading to display some spinner
-      });
   }
 
   onFilterChange(filter: IFilter): void {
