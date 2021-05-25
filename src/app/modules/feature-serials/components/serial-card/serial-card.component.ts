@@ -24,7 +24,7 @@ export class SerialCardComponent {
 
   constructor(private router: Router) {}
 
-  navigateToDetails() {
+  navigateToDetails(): void {
     this.router.navigate(['/details', this.serialId]);
   }
 }

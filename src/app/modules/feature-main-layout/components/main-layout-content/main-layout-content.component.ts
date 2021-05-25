@@ -15,6 +15,7 @@ export class MainLayoutContentComponent implements OnInit {
   genresOptions$ = this.serialFacade.serialsGenres$
   error$ = this.serialFacade.error$;
   isLoading$ = this.serialFacade.isLoading$;
+  
   constructor(private serialFacade: SerialFacade) { }
 
   ngOnInit(): void {

@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SerialFacade } from 'src/app/modules/serial-store/serial.facade';
-import { ISerialDetails } from 'src/app/modules/serial-store/models/serial.models';
 
 @UntilDestroy()
 @Component({
@@ -12,34 +11,19 @@ import { ISerialDetails } from 'src/app/modules/serial-store/models/serial.model
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SerialDetailsComponent implements OnInit {
-  serial: ISerialDetails;
+  serial$ = this.serialFacade.serialDetails$;
+  error$ = this.serialFacade.error$;
+  isLoading$ = this.serialFacade.isLoading$;
 
   constructor(
     private route: ActivatedRoute,
-    private serialFacade: SerialFacade,
-    private cdr: ChangeDetectorRef) { }
+    private serialFacade: SerialFacade) { }
 
   ngOnInit(): void {
     this.route.params
       .pipe(untilDestroyed(this))
       .subscribe(params => {
         this.serialFacade.getSerialDetailsById(params.id);
-      });
-    this.serialFacade.serialDetails$
-      .pipe(untilDestroyed(this))
-      .subscribe((serialDetails) => {
-        this.serial = serialDetails;
-        this.cdr.markForCheck();
-      });
-    this.serialFacade.error$
-      .pipe(untilDestroyed(this))
-      .subscribe((error) => {
-        //TODO: handle error by display some toast or text
-      });
-    this.serialFacade.isLoading$
-      .pipe(untilDestroyed(this))
-      .subscribe((error) => {
-        //TODO: handle isLoading to display some spinner
       });
   }
 }

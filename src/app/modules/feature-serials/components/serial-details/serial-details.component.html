@@ -1,7 +1,7 @@
 <app-card class="detailed-card">
   <ng-template cardContent>
     <ng-container
-      *ngTemplateOutlet="serialDetails; context: { $implicit: serial }"
+      *ngTemplateOutlet="serialDetails; context: { $implicit: (serial$ | async) }"
     ></ng-container>
   </ng-template>
 </app-card>
