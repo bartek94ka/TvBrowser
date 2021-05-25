@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ISerial, GenresType } from 'src/app/modules/serial-store/serial.models';
+import { ISerial, GenresType } from 'src/app/modules/serial-store/models/serial.models';
 
 @Component({
   selector: 'app-serial-card',

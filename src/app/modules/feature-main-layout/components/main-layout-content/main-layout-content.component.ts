@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { SerialFacade } from '../../serial-store/serial.facade';
-import { ISerial, IFilter } from '../../serial-store/serial.models';
+import { SerialFacade } from '../../../serial-store/serial.facade';
+import { ISerial, IFilter } from '../../../serial-store/models/serial.models';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()

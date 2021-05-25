@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ISerial } from 'src/app/modules/serial-store/serial.models';
+import { ISerial } from 'src/app/modules/serial-store/models/serial.models';
 
 @Component({
   selector: 'app-serial-list',

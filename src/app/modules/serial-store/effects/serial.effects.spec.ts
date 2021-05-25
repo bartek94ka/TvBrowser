@@ -1,10 +1,10 @@
 import { TestBed } from "@angular/core/testing";
 import { Observable, of, throwError } from "rxjs";
 import { SerialEffects } from "./serial.effects";
-import { SerialService } from "./serial.service";
+import { SerialService } from "../services/serial.service";
 import { provideMockActions } from '@ngrx/effects/testing';
-import { GenresType, IFilter, ISerial, ISerialDetails } from "./serial.models";
-import * as serialActions from './serial.actions';
+import { GenresType, IFilter, ISerial, ISerialDetails } from "../models/serial.models";
+import * as serialActions from '../actions/serial.actions';
 
 const mockSerialDetails: ISerialDetails = {
     name: 'Narcos', id: 1234523, genres: [GenresType.ACTION],

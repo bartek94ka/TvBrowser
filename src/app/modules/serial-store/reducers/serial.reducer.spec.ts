@@ -1,7 +1,7 @@
-import { GetFilteredSerials, GetFilteredSerialsFailed, GetFilteredSerialsSuccess, GetSerialById, GetSerialByIdFailed, GetSerialByIdSuccess } from "./serial.actions";
-import { GenresType, IFilter, ISerial, ISerialDetails } from "./serial.models";
+import { GetFilteredSerials, GetFilteredSerialsFailed, GetFilteredSerialsSuccess, GetSerialById, GetSerialByIdFailed, GetSerialByIdSuccess } from "../actions/serial.actions";
+import { GenresType, IFilter, ISerial, ISerialDetails } from "../models/serial.models";
 import { SerialReducer } from "./serial.reducer";
-import SerialState, { initializeState } from './serial.state';
+import SerialState, { initializeState } from '../states/serial.state';
 
 function getDefaultSerial(name: string): ISerial {
     return { name: name };

@@ -1,4 +1,4 @@
-import { GenresType, ISerial, ISerialDetails } from './serial.models';
+import { GenresType, ISerial, ISerialDetails } from '../models/serial.models';
 
 export default class SerialState {
   serials: ISerial[] = [];

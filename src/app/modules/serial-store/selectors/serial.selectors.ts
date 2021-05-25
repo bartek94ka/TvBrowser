@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import SerialState from './serial.state';
+import SerialState from '../states/serial.state';
 
 export const serialsSelector = createFeatureSelector<SerialState>('state');
 

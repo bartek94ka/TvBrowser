@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SerialFacade } from 'src/app/modules/serial-store/serial.facade';
-import { ISerialDetails } from 'src/app/modules/serial-store/serial.models';
+import { ISerialDetails } from 'src/app/modules/serial-store/models/serial.models';
 
 @UntilDestroy()
 @Component({

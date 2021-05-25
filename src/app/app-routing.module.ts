@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { MainLayoutComponent } from './modules/feature-main-layout/main-layout/main-layout.component';
+import { MainLayoutComponent } from './modules/feature-main-layout/components/main-layout/main-layout.component';
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, loadChildren: () => import('./modules/feature-main-layout/feature-main-layout.module').then(m => m.FeatureMainLayoutModule) }

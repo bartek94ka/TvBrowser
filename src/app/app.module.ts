@@ -6,9 +6,9 @@ import { FeatureSerialsModule } from './modules/feature-serials/feature-serials.
 import { FeatureFiltersModule } from './modules/feature-filters/feature-filters.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { SerialReducer } from './modules/serial-store/serial.reducer';
+import { SerialReducer } from './modules/serial-store/reducers/serial.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { SerialEffects } from './modules/serial-store/serial.effects';
+import { SerialEffects } from './modules/serial-store/effects/serial.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({

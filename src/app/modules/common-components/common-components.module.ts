@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './card/card.component';
-import { CardContentDirective } from './card/card-content.directive';
+import { CardComponent } from './components/card/card.component';
+import { CardContentDirective } from './components/card/card-content.directive';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Store } from '@ngrx/store';
-import SerialState from './serial.state';
-import * as serialActions from './serial.actions';
-import * as selectors from './serial.selectors';
-import { IFilter } from './serial.models';
+import SerialState from './states/serial.state';
+import * as serialActions from './actions/serial.actions';
+import * as selectors from './selectors/serial.selectors';
+import { IFilter } from './models/serial.models';
 
 @Injectable({
     providedIn: 'root'

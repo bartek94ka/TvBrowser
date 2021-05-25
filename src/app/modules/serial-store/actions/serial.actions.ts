@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ISerial, IFilter, GenresType, ISerialDetails } from './serial.models';
+import { ISerial, IFilter, GenresType, ISerialDetails } from '../models/serial.models';
 
 export const GetFilteredSerials = createAction(
   '[Serial] - Get Filtered Serials',

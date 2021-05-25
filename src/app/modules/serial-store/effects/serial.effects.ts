@@ -3,9 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import * as SerialActions from './serial.actions';
-import { SerialService } from './serial.service';
-import { GenresType, IFilter, ISerial, ISerialDetails } from './serial.models';
+import * as SerialActions from '../actions/serial.actions';
+import { SerialService } from '../services/serial.service';
+import { GenresType, IFilter, ISerial, ISerialDetails } from '../models/serial.models';
 
 @Injectable()
 export class SerialEffects {

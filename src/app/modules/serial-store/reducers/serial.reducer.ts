@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as SerialActions from './serial.actions';
-import SerialState, { initializeState } from './serial.state';
+import * as SerialActions from '../actions/serial.actions';
+import SerialState, { initializeState } from '../states/serial.state';
 
 const initialState = initializeState();
 
