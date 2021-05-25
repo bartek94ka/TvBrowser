@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { IFilter } from 'src/app/serial-store/serial.models';
+import { IFilter } from 'src/app/modules/serial-store/serial.models';
 
 @UntilDestroy()
 @Component({

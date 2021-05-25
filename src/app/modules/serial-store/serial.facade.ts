@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Store } from '@ngrx/store';
 import SerialState from './serial.state';
-import * as serialActions from '../serial-store/serial.actions';
+import * as serialActions from './serial.actions';
 import * as selectors from './serial.selectors';
 import { IFilter } from './serial.models';
 
